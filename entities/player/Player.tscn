@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://drj5l6cuickqd"]
+
+[ext_resource type="Script" uid="uid://to8et43nnqop" path="res://entities/player/player.gd" id="1_mab2k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_453mm"]
+size = Vector2(28, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mab2k"]
+
+[node name="Player" type="CharacterBody2D" unique_id=315966300]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_mab2k")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=420527092]
+custom_minimum_size = Vector2(28, 28)
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 14.0
+offset_bottom = 14.0
+color = Color(0.05490196, 0.09019608, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1216242513]
+shape = SubResource("RectangleShape2D_453mm")
+debug_color = Color(0.71589327, 0.46699125, 0.34368306, 0.41960785)
+
+[node name="GunPivot" type="Node2D" parent="." unique_id=598619662]
+
+[node name="ColorRect2" type="ColorRect" parent="GunPivot" unique_id=469981200]
+custom_minimum_size = Vector2(20, 4)
+offset_top = -2.0
+offset_right = 20.0
+offset_bottom = 2.0
+color = Color(0.043470383, 0.1026813, 0.23500973, 1)
+
+[node name="Muzzle" type="Marker2D" parent="GunPivot" unique_id=1239676906]
+light_mask = 2
+position = Vector2(20, 0)
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1460001141]
+wait_time = 0.2
+one_shot = true
+
+[node name="InteractionRay" type="RayCast2D" parent="." unique_id=1338750465]
+target_position = Vector2(0, 0)
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1531167662]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1681127208]
+shape = SubResource("CircleShape2D_mab2k")
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

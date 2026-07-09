@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="BulletHell"
+run/main_scene="uid://cvx2yapdpkln8"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

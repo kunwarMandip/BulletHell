@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://cvx2yapdpkln8"]
+
+[ext_resource type="Script" uid="uid://ck1uivc8f1hkw" path="res://world/bullet_pool.gd" id="1_1tnoa"]
+[ext_resource type="Script" uid="uid://crxsu4gy3ynwt" path="res://world/world.gd" id="1_5hvw7"]
+[ext_resource type="PackedScene" uid="uid://drj5l6cuickqd" path="res://entities/player/Player.tscn" id="1_jeodi"]
+[ext_resource type="Script" uid="uid://ccrt737rjnjdw" path="res://world/emitter.gd" id="2_qcaji"]
+
+[node name="World" type="Node2D" unique_id=816842779]
+script = ExtResource("1_5hvw7")
+
+[node name="BulletPool" type="Node2D" parent="." unique_id=25415945]
+script = ExtResource("1_1tnoa")
+
+[node name="Emitter" type="Node2D" parent="." unique_id=161510904]
+script = ExtResource("2_qcaji")
+
+[node name="Player" parent="." unique_id=315966300 instance=ExtResource("1_jeodi")]
+
+[node name="Hud" type="CanvasLayer" parent="." unique_id=1964492328]
+
+[node name="HealthLabel" type="Label" parent="Hud" unique_id=2075638647]
+offset_left = 393.0
+offset_top = 21.0
+offset_right = 433.0
+offset_bottom = 44.0
+text = "text"
+
+[node name="TimerLabel" type="Label" parent="Hud" unique_id=1106459373]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Time"
+metadata/_edit_use_anchors_ = true
+
+[node name="PatternLabel" type="Label" parent="Hud" unique_id=699244558]
+offset_left = 640.0
+offset_top = 4.0
+offset_right = 699.0
+offset_bottom = 27.0
+text = "Pattern"
+
+[node name="DeathScreen" type="Control" parent="Hud" unique_id=182699438]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackGround" type="ColorRect" parent="Hud/DeathScreen" unique_id=681287102]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.17752576, 0.17375436, 2.4065375e-08, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud/DeathScreen/BackGround" unique_id=779448699]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimeLabel" type="Label" parent="Hud/DeathScreen/BackGround/VBoxContainer" unique_id=1683970182]
+layout_mode = 2
+text = "Time:"
+
+[node name="RestartButton" type="Button" parent="Hud/DeathScreen/BackGround/VBoxContainer" unique_id=2132174297]
+layout_mode = 2
+text = "Restart"
